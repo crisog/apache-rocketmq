@@ -1,0 +1,13 @@
+ARG ROCKETMQ_VERSION=5.3.2
+FROM apache/rocketmq:${ROCKETMQ_VERSION}
+
+USER root
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends gosu ca-certificates \
+ && rm -rf /var/lib/apt/lists/*
+
+COPY broker/entrypoint.sh /usr/local/bin/entrypoint
+RUN chmod +x /usr/local/bin/entrypoint
+
+ENTRYPOINT ["/usr/local/bin/entrypoint"]
+CMD []

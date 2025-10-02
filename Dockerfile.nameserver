@@ -1,0 +1,4 @@
+ARG ROCKETMQ_VERSION=5.3.2
+FROM apache/rocketmq:${ROCKETMQ_VERSION}
+
+CMD ["sh","-lc","mkdir -p /home/rocketmq/logs && exec sh mqnamesrv"]
